@@ -1,79 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1740 400" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 570" role="img" aria-labelledby="title description">
   <title id="title">Contribution flow</title>
-  <desc id="description">A left-to-right contribution workflow from alignment through merge, with feedback loops from CI and review and from approval and merge back to code and local tests.</desc>
+  <desc id="description">A compact three-row contribution workflow. Align on intent, create an issue, and isolate work in a worktree and branch. Then code and test, commit and push, open a pull request, complete CI and review, approve and merge, and clean up the worktree and branch. CI and review feedback and post-merge follow-up work both return to code and local tests.</desc>
   <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-      <path d="M 0 0 L 10 4 L 0 8 z" fill="#2563eb"/>
-    </marker>
+    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M 0 0 L 10 4 L 0 8 z" fill="#2563eb"/></marker>
+    <marker id="feedback-arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M 0 0 L 10 4 L 0 8 z" fill="#7c3aed"/></marker>
+    <filter id="shadow" x="-10%" y="-15%" width="120%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#1e3a8a" flood-opacity="0.14"/></filter>
     <style>
-      .node { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
-      .step { stroke: #2563eb; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
-      .feedback { stroke: #7c3aed; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
-      .label { fill: #172554; font: 600 16px system-ui, sans-serif; text-anchor: middle; }
-      .loop-label { fill: #5b21b6; font: 600 14px system-ui, sans-serif; text-anchor: middle; }
+      .node { stroke-width: 2; filter: url(#shadow); } .standard { fill: #eff6ff; stroke: #2563eb; } .isolate { fill: #f5f3ff; stroke: #7c3aed; } .cleanup { fill: #ecfdf5; stroke: #059669; }
+      .step { stroke: #2563eb; stroke-width: 2.75; fill: none; marker-end: url(#arrowhead); } .feedback { stroke: #7c3aed; stroke-width: 2.75; fill: none; marker-end: url(#feedback-arrowhead); }
+      .label { fill: #172554; font: 650 17px system-ui, sans-serif; text-anchor: middle; } .small-label { fill: #172554; font: 650 15px system-ui, sans-serif; text-anchor: middle; } .loop-label { fill: #5b21b6; font: 600 14px system-ui, sans-serif; text-anchor: middle; }
     </style>
   </defs>
+  <rect width="960" height="570" rx="24" fill="#f8fafc"/>
 
-  <rect width="1740" height="400" rx="20" fill="#f8fafc"/>
+  <!-- Main delivery path: alternate direction each row to keep the layout compact. -->
+  <path class="step" d="M 270 100 H 365"/><path class="step" d="M 595 100 H 690"/><path class="step" d="M 805 140 V 220"/>
+  <path class="step" d="M 690 260 H 595"/><path class="step" d="M 365 260 H 270"/><path class="step" d="M 155 300 V 385"/>
+  <path class="step" d="M 270 425 H 365"/><path class="step" d="M 595 425 H 690"/>
 
-  <path class="step" d="M 155 140 H 185"/>
-  <path class="step" d="M 325 140 H 355"/>
-  <path class="step" d="M 495 140 H 525"/>
-  <path class="step" d="M 665 140 H 695"/>
-  <path class="step" d="M 835 140 H 865"/>
-  <path class="step" d="M 1005 140 H 1035"/>
-  <path class="step" d="M 1175 140 H 1205"/>
-  <path class="step" d="M 1345 140 H 1375"/>
-  <path class="step" d="M 1515 140 H 1545"/>
+  <g><rect class="node standard" x="40" y="60" width="230" height="80" rx="16"/><text class="label" x="155" y="108">Align on intent</text></g>
+  <g><rect class="node standard" x="365" y="60" width="230" height="80" rx="16"/><text class="label" x="480" y="108">Create issue</text></g>
+  <g><rect class="node isolate" x="690" y="60" width="230" height="80" rx="16"/><text class="label" x="805" y="94">Isolate work</text><text class="small-label" x="805" y="116">worktree + branch</text></g>
+  <g><rect class="node standard" x="690" y="220" width="230" height="80" rx="16"/><text class="label" x="805" y="254">Code + local tests</text><text class="small-label" x="805" y="276">build and validate</text></g>
+  <g><rect class="node standard" x="365" y="220" width="230" height="80" rx="16"/><text class="label" x="480" y="254">Commit + push</text><text class="small-label" x="480" y="276">share the change</text></g>
+  <g><rect class="node standard" x="40" y="220" width="230" height="80" rx="16"/><text class="label" x="155" y="268">Pull request</text></g>
+  <g><rect class="node standard" x="40" y="385" width="230" height="80" rx="16"/><text class="label" x="155" y="419">CI and review</text><text class="small-label" x="155" y="441">verify the change</text></g>
+  <g><rect class="node standard" x="365" y="385" width="230" height="80" rx="16"/><text class="label" x="480" y="419">Approve and merge</text><text class="small-label" x="480" y="441">deliver to main</text></g>
+  <g><rect class="node cleanup" x="690" y="385" width="230" height="80" rx="16"/><text class="label" x="805" y="419">Cleanup</text><text class="small-label" x="805" y="441">delete worktree + branch</text></g>
 
-  <g>
-    <rect class="node" x="15" y="105" width="140" height="70" rx="12"/>
-    <text class="label" x="85" y="145">Align on intent</text>
-  </g>
-  <g>
-    <rect class="node" x="185" y="105" width="140" height="70" rx="12"/>
-    <text class="label" x="255" y="145">Create issue</text>
-  </g>
-  <g>
-    <rect class="node" x="355" y="105" width="140" height="70" rx="12"/>
-    <text class="label" x="425" y="145">Create branch</text>
-  </g>
-  <g>
-    <rect class="node" x="525" y="105" width="140" height="70" rx="12"/>
-    <text class="label" x="595" y="145">Create worktree</text>
-  </g>
-  <g>
-    <rect class="node" x="695" y="105" width="140" height="70" rx="12"/>
-    <text class="label" x="765" y="134">Code +</text>
-    <text class="label" x="765" y="156">local tests</text>
-  </g>
-  <g>
-    <rect class="node" x="865" y="105" width="140" height="70" rx="12"/>
-    <text class="label" x="935" y="145">Commit</text>
-  </g>
-  <g>
-    <rect class="node" x="1035" y="105" width="140" height="70" rx="12"/>
-    <text class="label" x="1105" y="145">Push</text>
-  </g>
-  <g>
-    <rect class="node" x="1205" y="105" width="140" height="70" rx="12"/>
-    <text class="label" x="1275" y="134">Open pull</text>
-    <text class="label" x="1275" y="156">request</text>
-  </g>
-  <g>
-    <rect class="node" x="1375" y="105" width="140" height="70" rx="12"/>
-    <text class="label" x="1445" y="134">CI and</text>
-    <text class="label" x="1445" y="156">review</text>
-  </g>
-  <g>
-    <rect class="node" x="1545" y="105" width="180" height="70" rx="12"/>
-    <text class="label" x="1635" y="134">Approve and merge</text>
-    <text class="label" x="1635" y="156">to main</text>
-  </g>
-
-  <path class="feedback" d="M 1445 175 V 245 H 765 V 175"/>
-  <text class="loop-label" x="1105" y="238">address CI or review feedback</text>
-
-  <path class="feedback" d="M 1635 175 V 330 H 765 V 175"/>
-  <text class="loop-label" x="1200" y="323">iterate on follow-up work</text>
+  <!-- Feedback routes return to code-and-test without crossing the main path. -->
+  <path class="feedback" d="M 155 385 V 340 H 805 V 300"/><text class="loop-label" x="480" y="333">address CI or review feedback</text>
+  <path class="feedback" d="M 480 465 V 525 H 805 V 300"/><text class="loop-label" x="642" y="518">iterate on follow-up work</text>
 </svg>
