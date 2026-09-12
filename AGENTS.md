@@ -33,6 +33,15 @@ Treat the issue as the contract between the human and the agent. If the requeste
 - Before opening or updating the PR, run the relevant tests/checks and report their results in the PR.
 - Address CI failures and review feedback on the same branch. Merge only through the approved, reviewed PR after required CI checks pass. Do not force-push shared branches or bypass required checks.
 
+## Post-merge cleanup
+
+After the PR has merged into `main`:
+
+1. In the primary workspace, fetch `origin/main`, switch to `main` if necessary, and fast-forward it to the latest `origin/main`.
+2. Verify the completed issue worktree has no uncommitted changes, then remove it with `git worktree remove <worktree-path>`.
+
+Do not force-remove a dirty worktree. Stop and preserve its changes until the human decides how they should be handled.
+
 When `main` does not exist yet, stop and report the repository state rather than silently substituting another branch; the human should decide whether to establish or rename the default branch.
 
 ## Isolated agent handoffs
