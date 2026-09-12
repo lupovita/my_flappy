@@ -21,7 +21,7 @@ flowchart LR
 
 Open `index.html` in a browser. There are no dependencies to install.
 
-Or play the live site: [Flappy Learns on GitHub Pages](https://lupovita.github.io/my_flappy/).
+🎮 **Ready to fly?** [Play Flappy Learns live →](https://lupovita.github.io/my_flappy/)
 
 ## Current milestone
 
