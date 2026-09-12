@@ -12,3 +12,12 @@ nav a[aria-current="page"] { color: #ef7544; text-decoration: underline; text-de
 @media (max-width: 800px) { .destination-grid { grid-template-columns: repeat(2, 1fr); }.home-hero { padding-top: 50px; }.site-header { height: auto; min-height: 72px; flex-wrap: wrap; gap: 8px; padding-block: 13px; }.site-header nav { flex-wrap: wrap; justify-content: flex-end; } }
 @media (max-width: 460px) { .destination-grid { grid-template-columns: 1fr; }.home-hero { padding-bottom: 125px; } }
 .network-card { margin-top: 18px; padding-top: 15px; border-top: 2px dashed #c9dbd9; }.network-card .eyebrow { margin-bottom: 2px; }.network-card h4 { margin: 0 0 9px; font-size: 14px; }.network-card canvas { width: 100%; height: auto; border: 2px solid #17354a; border-radius: 10px; background: #eefaff; }.network-legend { display: flex; gap: 6px; align-items: center; margin: 7px 0; color: #406273; font-size: 10px; font-weight: 800; }.network-legend i { width: 12px; height: 4px; border-radius: 4px; }.network-legend .positive { background: #3b9db9; }.network-legend .negative { background: #e96874; }
+
+.learn-more { margin-top: 18px; padding: 9px 14px; border: 2px solid var(--ink); border-radius: 999px; color: var(--ink); background: #fff3bf; box-shadow: 0 3px 0 var(--ink); cursor: pointer; font: 800 15px Nunito, sans-serif; transition: transform .15s, box-shadow .15s; }
+.learn-more:hover { transform: translateY(-2px); box-shadow: 0 5px 0 var(--ink); }
+.learn-more:focus-visible, .detail-close:focus-visible { outline: 3px solid #ef7544; outline-offset: 3px; }
+.detail-dialog { width: min(620px, calc(100% - 32px)); max-height: min(680px, calc(100% - 32px)); padding: 26px 30px 30px; border: 3px solid var(--ink); border-radius: 22px; color: var(--ink); background: #fff9e9; box-shadow: 0 10px 0 rgba(23,53,74,.25); }
+.detail-dialog::backdrop { background: rgba(23,53,74,.55); }
+.detail-dialog__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.detail-dialog .eyebrow { margin: 0; }.detail-dialog h2 { margin: 4px 0 12px; font: 800 32px/1 "Baloo 2", sans-serif; }.detail-dialog #detail-content { font-size: 18px; line-height: 1.55; }.detail-close { display: grid; width: 38px; height: 38px; flex: 0 0 auto; place-items: center; border: 2px solid var(--ink); border-radius: 50%; color: var(--ink); background: #fff; cursor: pointer; font: 800 25px/1 Nunito, sans-serif; }
+@media (max-width: 520px) { .detail-dialog { padding: 22px; }.detail-dialog h2 { font-size: 28px; } }
