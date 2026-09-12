@@ -1,0 +1,3 @@
+# Agent worktrees are local handoff directories, not repository content.
+worktrees/*
+!worktrees/.gitkeep

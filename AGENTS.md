@@ -23,3 +23,9 @@ Treat the issue as the contract between the human and the agent. If the requeste
 - Merge only through the reviewed PR. Do not force-push shared branches or bypass required checks.
 
 When `main` does not exist yet, stop and report the repository state rather than silently substituting another branch; the human should decide whether to establish or rename the default branch.
+
+## Isolated agent handoffs
+
+- All agent implementation work and handoffs must use a Git worktree below `worktrees/`, such as `worktrees/feature-123-short-slug`.
+- Create the worktree on the issue branch and state its exact path and branch when handing work to another agent. This keeps the root workspace on `main` clean while allowing agents to inspect and navigate sibling worktrees.
+- Do not commit worktree contents. `.gitignore` excludes `worktrees/*` while retaining `worktrees/.gitkeep` so the shared handoff directory exists after checkout.
