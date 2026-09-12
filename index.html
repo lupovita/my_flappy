@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flappy Learns</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#play">FLAPPY <span>LEARNS</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#play">Play</a>
+      <a href="#lessons">Lessons</a>
+      <a href="#lab">Lab</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="play">
+      <div class="hero-copy">
+        <p class="eyebrow">AN INTERACTIVE NEURAL-NETWORK STORY</p>
+        <h1>First, <em>you</em> teach<br />the bird to fly.</h1>
+        <p class="intro">Tap <kbd>SPACE</kbd> to flap through the pipes. Next, we’ll swap your reflexes for a tiny neural network and evolve its strategy.</p>
+        <button class="primary-button" id="start-button">Play Flappy Bird <span>→</span></button>
+        <p class="tiny-note">No installs. Just open this page in a browser.</p>
+      </div>
+
+      <div class="game-shell" aria-label="Flappy Bird game">
+        <div class="scoreboard"><span>SCORE</span><strong id="score">0</strong><span class="best-label">BEST <b id="best-score">0</b></span></div>
+        <canvas id="game" width="420" height="560" tabindex="0" aria-label="Press Space to make the bird flap"></canvas>
+        <div class="game-overlay" id="game-overlay">
+          <div class="overlay-card">
+            <p class="bird-icon">🐤</p>
+            <h2 id="overlay-title">Ready to fly?</h2>
+            <p id="overlay-text">Press <b>SPACE</b> or click the game.</p>
+            <button id="overlay-button">Start game</button>
+          </div>
+        </div>
+        <p class="controls">SPACE = FLAP &nbsp;•&nbsp; click/tap also works</p>
+      </div>
+    </section>
+
+    <section class="lesson-section" id="lessons">
+      <p class="eyebrow">THE FLIGHT SCHOOL</p>
+      <h2>How will a computer learn this?</h2>
+      <p class="section-intro">Follow the four short lessons. Each deck has four bite-sized slides—made for teaching live.</p>
+
+      <div class="deck-tabs" role="tablist" aria-label="Lesson decks">
+        <button class="deck-tab active" role="tab" aria-selected="true" aria-controls="deck-basics" id="tab-basics" data-deck="basics">1. The Game</button>
+        <button class="deck-tab" role="tab" aria-selected="false" aria-controls="deck-network" id="tab-network" data-deck="network">2. The Brain</button>
+        <button class="deck-tab" role="tab" aria-selected="false" aria-controls="deck-evolution" id="tab-evolution" data-deck="evolution">3. Evolution</button>
+        <button class="deck-tab" role="tab" aria-selected="false" aria-controls="deck-strategy" id="tab-strategy" data-deck="strategy">4. Training Strategy</button>
+      </div>
+
+      <div class="deck active" id="deck-basics" role="tabpanel" aria-labelledby="tab-basics">
+        <article class="slide active"><span class="slide-number">01 / 04</span><h3>A tiny world with one big question</h3><p>Our bird is always falling. Can it keep moving through the gaps between pipes?</p><div class="visual falling">🐤 <span>↓ gravity pulls down</span></div></article>
+        <article class="slide"><span class="slide-number">02 / 04</span><h3>One action: flap</h3><p>A flap gives the bird a short upward push. In this first version, a human decides <strong>when</strong> to press Space.</p><div class="key-visual"><kbd>SPACE</kbd><span>→</span><span class="flap-arrow">🐤 ↑</span></div></article>
+        <article class="slide"><span class="slide-number">03 / 04</span><h3>Simple rules make a game</h3><p>Touch a pipe or the ground: game over. Pass a pipe: earn one point. The score is our measure of success.</p><div class="rule-visual"><b>avoid</b> 🟩 <b>collect</b> ⭐</div></article>
+        <article class="slide"><span class="slide-number">04 / 04</span><h3>Now replace the player</h3><p>The game will stay the same. Only the decision-maker changes: instead of a keyboard, a neural network chooses flap or wait.</p><div class="swap-visual"><span>⌨️ YOU</span><i>→</i><span>🧠 NETWORK</span></div></article>
+      </div>
+
+      <div class="deck" id="deck-network" role="tabpanel" aria-labelledby="tab-network" hidden>
+        <article class="slide active"><span class="slide-number">01 / 04</span><h3>Five clues about the world</h3><p>Every frame, the network reads five numbers: bird height, bird velocity, pipe distance, gap top, and gap bottom.</p><div class="five-inputs"><span>Y</span><span>V</span><span>DX</span><span>TOP</span><span>BOT</span></div></article>
+        <article class="slide"><span class="slide-number">02 / 04</span><h3>A very small brain</h3><p>Our network has two hidden layers with four neurons each. Small enough to draw, but enough to discover useful behavior.</p><div class="network-diagram" role="img" aria-label="Neural network with five inputs, two hidden layers of four neurons, and one output">
+          <svg viewBox="0 0 760 250" aria-hidden="true">
+            <g class="connections" stroke="#8dc8dc" stroke-width="2"><path d="M115 55 L265 45 M115 55 L265 85 M115 55 L265 125 M115 55 L265 165 M115 85 L265 45 M115 85 L265 85 M115 85 L265 125 M115 85 L265 165 M115 115 L265 45 M115 115 L265 85 M115 115 L265 125 M115 115 L265 165 M115 145 L265 45 M115 145 L265 85 M115 145 L265 125 M115 145 L265 165 M115 175 L265 45 M115 175 L265 85 M115 175 L265 125 M115 175 L265 165 M295 45 L445 45 M295 45 L445 85 M295 45 L445 125 M295 45 L445 165 M295 85 L445 45 M295 85 L445 85 M295 85 L445 125 M295 85 L445 165 M295 125 L445 45 M295 125 L445 85 M295 125 L445 125 M295 125 L445 165 M295 165 L445 45 M295 165 L445 85 M295 165 L445 125 M295 165 L445 165 M475 45 L625 105 M475 85 L625 105 M475 125 L625 105 M475 165 L625 105" /></g>
+            <g class="input-nodes"><circle cx="100" cy="55" r="15"/><circle cx="100" cy="85" r="15"/><circle cx="100" cy="115" r="15"/><circle cx="100" cy="145" r="15"/><circle cx="100" cy="175" r="15"/></g>
+            <g class="hidden-nodes"><circle cx="280" cy="45" r="15"/><circle cx="280" cy="85" r="15"/><circle cx="280" cy="125" r="15"/><circle cx="280" cy="165" r="15"/><circle cx="460" cy="45" r="15"/><circle cx="460" cy="85" r="15"/><circle cx="460" cy="125" r="15"/><circle cx="460" cy="165" r="15"/></g><g class="output-node"><circle cx="640" cy="105" r="18"/></g>
+            <g class="layer-labels"><text x="100" y="225">INPUTS</text><text x="280" y="225">HIDDEN 1</text><text x="460" y="225">HIDDEN 2</text><text x="640" y="225">OUTPUT</text></g><g class="node-labels"><text x="52" y="59">5</text><text x="232" y="49">4</text><text x="412" y="49">4</text><text x="683" y="109">1</text></g>
+          </svg><p><span>5 signals</span><b>→</b><span>4 neurons</span><b>→</b><span>4 neurons</span><b>→</b><span>1 decision</span></p>
+        </div></article>
+        <article class="slide"><span class="slide-number">03 / 04</span><h3>Weights are tiny opinions</h3><p>Each connection has a weight. A positive weight encourages a neuron; a negative one discourages it. Every neuron also has a bias.</p><div class="formula">signal = activation( inputs × weights + bias )</div></article>
+        <article class="slide"><span class="slide-number">04 / 04</span><h3>One answer: flap or wait</h3><p>The last neuron produces a number from 0 to 1. Above 0.5 means <strong>FLAP</strong>; otherwise the bird waits.</p><div class="output-visual"><span>0.73</span><i>≥ 0.5</i><b>FLAP!</b></div></article>
+      </div>
+
+      <div class="deck" id="deck-evolution" role="tabpanel" aria-labelledby="tab-evolution" hidden>
+        <article class="slide active"><span class="slide-number">01 / 04</span><h3>Start with many random birds</h3><p>Each bird gets a randomly filled network. Most are terrible at first—and that is exactly where learning begins.</p><div class="birds-row">🐤 🐤 🐤 🐤 🐤</div></article>
+        <article class="slide"><span class="slide-number">02 / 04</span><h3>Fitness is the score</h3><p>Let every bird play. Its fitness is how far it gets (or how many pipes it passes). Higher is better.</p><div class="fitness"><span>🐤 2</span><span>🐤 7</span><span>🐤 12 ★</span></div></article>
+        <article class="slide"><span class="slide-number">03 / 04</span><h3>The best three survive</h3><p>Keep the top three networks. They become the parents for the next generation instead of starting from scratch.</p><div class="survivors">🏆 🏆 🏆 <span>survive</span></div></article>
+        <article class="slide"><span class="slide-number">04 / 04</span><h3>Copy, mix, mutate, repeat</h3><p>Children inherit parent weights, with a few small random changes. Over many generations, lucky improvements accumulate.</p><div class="cycle">parents → offspring → play → select ↻</div></article>
+      </div>
+
+      <div class="deck" id="deck-strategy" role="tabpanel" aria-labelledby="tab-strategy" hidden>
+        <article class="slide active"><span class="slide-number">01 / 04</span><h3>Keep the best three</h3><p>After five races, rank every bird by total fitness. The top three networks survive unchanged, so strong ideas are never accidentally lost.</p><div class="survivors">🥇 🥈 🥉 <span>the parents</span></div></article>
+        <article class="slide"><span class="slide-number">02 / 04</span><h3>Same course, fair comparison</h3><p>For the first five generations, every flock races the same five obstacle layouts. This removes luck: a higher score is much more likely to mean a better brain.</p><div class="formula">generations 1–5: fixed courses → fair fitness</div></article>
+        <article class="slide"><span class="slide-number">03 / 04</span><h3>Then raise the challenge</h3><p>During every race, gaps shrink, pipes move faster, spacing tightens, and gravity grows stronger. Obstacle speed is also an input, so birds can adapt their timing.</p><div class="cycle">easy → faster → tighter → harder</div></article>
+        <article class="slide"><span class="slide-number">04 / 04</span><h3>Mutation is a balancing act</h3><p>Gentle mutation protects good behavior and improves steadily, but can get stuck. Wild mutation explores more possibilities, but may erase useful progress. Try both knobs in the Arena.</p><div class="output-visual"><span>gentle = refine</span><i>↔</i><b>wild = explore</b></div></article>
+      </div>
+      <div class="slide-controls"><button id="previous-slide" aria-label="Previous slide">←</button><span id="slide-status">Slide 1 of 4</span><button id="next-slide" aria-label="Next slide">→</button></div>
+    </section>
+
+    <section class="manual-lab" id="lab">
+      <div class="lab-heading"><p class="eyebrow">HANDS-ON LAB · STEP 1</p><h2>Manually train a tiny bird brain.</h2><p>Before evolution does the work, you can tune this simplest possible network yourself. Five live signals feed straight into one flap decision.</p></div>
+      <div class="lab-architecture"><span>bird height</span><span>vertical speed</span><span>pipe distance</span><span>gap top</span><span>gap bottom</span><b>→</b><strong>flap?</strong></div>
+      <div class="manual-grid">
+        <div class="manual-game-card"><div class="mini-score"><span>BOT SCORE</span><strong id="bot-score">0</strong><span>BEST <b id="bot-best">0</b></span></div><canvas id="bot-game" width="500" height="390" aria-label="Live game controlled by the neural network"></canvas><div class="bot-readout"><span>Output probability <b id="bot-output">0.50</b></span><span id="bot-action">WAIT</span></div><div class="lab-buttons"><button id="bot-start">Start / restart</button><button id="starter-preset">Load starter brain</button><button id="random-brain">Random brain</button></div></div>
+        <aside class="activation-card"><p class="eyebrow">LIVE ACTIVATIONS</p><h3>Inside the bird brain</h3><canvas id="activation-graph" width="300" height="390" aria-label="Live diagram of five inputs, weights and flap output"></canvas><p class="activation-key"><i class="positive"></i> positive <i class="negative"></i> negative</p></aside>
+        <div class="control-card"><div class="control-title"><div><p class="eyebrow">YOUR CONTROL PANEL</p><h3>Weights &amp; bias</h3></div><span class="count-pill">6 values</span></div><p class="control-help">Each slider is one number in the network. Move sliders while the bird is flying, then restart to test your newest brain.</p><div id="nn-controls"></div></div>
+      </div>
+      <p class="lab-tip"><b>Teaching tip:</b> start with the preset, then change one slider at a time. Watch the orange output number: over 0.50 means the bird flaps.</p>
+    </section>
+
+    <section class="evolution-lab" id="evolution-lab">
+      <div class="evolution-heading"><p class="eyebrow">HANDS-ON LAB · STEP 2</p><h2>Let evolution train the flock.</h2><p>Every bird has a 6 → 4 → 4 → 1 neural network. The sixth input is obstacle speed, so the bird can adapt its timing as the course accelerates. They race five different courses; then the top three become parents for the next generation.</p></div>
+      <div class="evo-explainer"><span><b>63</b> random birds</span><i>→</i><span><b>5</b> race rounds</span><i>→</i><span><b>top 3</b> survive</span><i>→</i><span><b>20</b> mutated children each</span><i>→</i><span><b>63</b> again</span></div>
+      <div class="evo-layout">
+        <div class="arena-card"><div class="arena-hud"><span>GEN <b id="evo-generation">1</b></span><span>ROUND <b id="evo-round">1 / 5</b></span><span>ALIVE <b id="evo-alive">63</b></span></div><canvas id="evolution-game" width="660" height="420" aria-label="Evolution race with 63 neural-network birds"></canvas><div class="arena-buttons"><button id="evo-start">Start evolution</button><button id="evo-pause">Pause</button><button id="evo-reset">New flock</button></div></div>
+        <aside class="evo-stats"><p class="eyebrow">RACE TRACKER</p><h3>Who is learning?</h3><div class="stat-box"><span>Current leader</span><strong id="evo-leader">—</strong><small id="evo-leader-score">waiting to race</small></div><div class="stat-grid"><div><span>This round high</span><b id="evo-round-high">0</b></div><div><span>All-time high</span><b id="evo-all-high">0</b></div></div><div class="evo-knobs"><label>Simulation speed <output id="simulation-speed-value">1×</output><input id="simulation-speed" type="range" min="0.25" max="4" value="1" step="0.25" /><small>Runs the same race faster or slower.</small></label><label>Difficulty growth <output id="difficulty-rate-value">1×</output><input id="difficulty-rate" type="range" min="0.25" max="3" value="1" step="0.25" /><small>Changes how quickly the course becomes hard.</small></label><label>Mutation strength <output id="mutation-strength-value">gentle</output><input id="mutation-strength" type="range" min="0.1" max="1" value="0.25" step="0.05" /><small>Lower = only a few, very small weight/bias changes.</small></label></div><div class="difficulty"><span>COURSE DIFFICULTY</span><div><i id="difficulty-fill"></i></div><small id="difficulty-text">Easy · wide gaps</small></div><div class="round-list"><h4>Five-round scorecard</h4><ol id="round-history"><li>Round 1 <span>not started</span></li><li>Round 2 <span>not started</span></li><li>Round 3 <span>not started</span></li><li>Round 4 <span>not started</span></li><li>Round 5 <span>not started</span></li></ol></div><p class="selection-note" id="evo-status">Press Start to release the first flock.</p></aside>
+      </div>
+    </section>
+  </main>
+  <footer>Built for curious brains · Flappy Learns</footer>
+  <script src="script.js"></script>
+</body>
+</html>
