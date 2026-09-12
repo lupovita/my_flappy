@@ -4,18 +4,7 @@ A beginner-friendly static HTML/CSS/JavaScript project about teaching a neural n
 
 ## Contribution flow
 
-```mermaid
-flowchart LR
-    align[Align on intent] --> issue[Create issue]
-    issue --> branch[Create branch]
-    branch --> worktree[Create worktree]
-    worktree --> codeTest[Code + local tests]
-    codeTest --> commit[Commit]
-    commit --> push[Push]
-    push --> pr[Open pull request]
-    pr --> review[CI and review]
-    review --> merge[Approve and merge to main]
-```
+![Contribution flow: align on intent, create an issue, branch, and worktree, code and test locally, commit, push, open a pull request, complete CI and review, then approve and merge to main. CI/review feedback and follow-up work both return to code and local tests.](assets/contribution-flow.svg)
 
 ## Run it
 
