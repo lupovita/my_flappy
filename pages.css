@@ -1,0 +1,13 @@
+nav a[aria-current="page"] { color: #ef7544; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 7px; }
+.home { min-height: calc(100vh - 122px); background: linear-gradient(#91ddf1 0 55%, #71c94a 55% 57%, #d6a85d 57%); }
+.home-hero { max-width: 980px; margin: auto; padding: 70px 26px 155px; text-align: center; }
+.home-hero h1 { margin: 0; font: 800 clamp(52px, 8vw, 84px) / .92 "Baloo 2", sans-serif; }
+.home-hero h1 em { color: #ef7544; font-style: normal; }
+.home-hero > p:not(.eyebrow) { max-width: 570px; margin: 20px auto 28px; font-size: 20px; line-height: 1.5; }
+.home-hero .primary-button { display: inline-block; text-decoration: none; }
+.destination-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1120px; margin: -95px auto 0; padding: 0 26px 65px; }
+.destination-card { min-height: 190px; padding: 23px; border: 3px solid var(--ink); border-radius: 20px; color: var(--ink); text-decoration: none; box-shadow: 0 7px 0 rgba(23, 53, 74, .25); transition: transform .15s, box-shadow .15s; }
+.destination-card:hover { transform: translateY(-5px); box-shadow: 0 12px 0 rgba(23, 53, 74, .22); }
+.destination-card span { font-size: 36px; }.destination-card h2 { margin: 7px 0 2px; font: 800 30px "Baloo 2", sans-serif; }.destination-card p { margin: 0; font-weight: 700; line-height: 1.35; }.destination-card.play { background: #fff3bf; }.destination-card.learn { background: #e9f8fc; }.destination-card.lab { background: #edf9e8; }.destination-card.arena { background: #f5ddce; }
+@media (max-width: 800px) { .destination-grid { grid-template-columns: repeat(2, 1fr); }.home-hero { padding-top: 50px; }.site-header { height: auto; min-height: 72px; flex-wrap: wrap; gap: 8px; padding-block: 13px; }.site-header nav { flex-wrap: wrap; justify-content: flex-end; } }
+@media (max-width: 460px) { .destination-grid { grid-template-columns: 1fr; }.home-hero { padding-bottom: 125px; } }
