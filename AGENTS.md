@@ -1,8 +1,18 @@
 # Agent contribution workflow
 
-Use the issue-driven GitHub Flow for every feature, bug fix, or other planned change.
+Use the alignment-first, issue-driven GitHub Flow for every feature, bug fix, or other planned change.
 
-## Issue is the contract
+## Align on human intent first
+
+Before creating an issue, branch, worktree, or changing files, hold a brainstorming session between the human and agent. Use it to establish a shared understanding of:
+
+- the problem to solve, intended outcome, and why it matters;
+- the desired scope, constraints, and explicit exclusions; and
+- observable success criteria and any important trade-offs.
+
+Do not begin implementation until the human and agent explicitly agree on that intent. Once aligned, turn the agreed outcome into the GitHub issue contract below. If new information changes the intent later, pause to realign with the human and update the issue before expanding the work.
+
+## Issue is the contract after alignment
 
 Before creating a feature branch or changing files, create or identify a GitHub issue with `gh issue`. The issue must describe:
 
@@ -16,11 +26,12 @@ Treat the issue as the contract between the human and the agent. If the requeste
 
 - Keep branches short-lived and focused on one issue.
 - Branch from the current `main` (after fetching it) using `feature/<issue-number>-<short-slug>` for features, `fix/<issue-number>-<short-slug>` for bugs, or another equally explicit type when appropriate.
+- Create an isolated Git worktree for the issue branch before implementation; use the code-and-local-test loop there until the issue success criteria are met.
 - Do not work directly on `main`.
-- Keep commits focused and explain meaningful behavior changes.
+- Keep commits focused, link them to the issue, and push the branch.
 - Open a pull request with `gh pr create --base main`, linking the issue and restating the success criteria. The PR is the review and delivery boundary.
 - Before opening or updating the PR, run the relevant tests/checks and report their results in the PR.
-- Merge only through the reviewed PR. Do not force-push shared branches or bypass required checks.
+- Address CI failures and review feedback on the same branch. Merge only through the approved, reviewed PR after required CI checks pass. Do not force-push shared branches or bypass required checks.
 
 When `main` does not exist yet, stop and report the repository state rather than silently substituting another branch; the human should decide whether to establish or rename the default branch.
 
