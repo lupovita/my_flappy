@@ -9,11 +9,17 @@ Apply this workflow to every feature, bug fix, refactor, or other planned reposi
 
 ## Required contract
 
-Before creating a branch or editing files, use `gh issue create` or identify an existing issue that explicitly contains:
+Before creating a branch or editing files, identify an existing issue or prepare a new issue contract that explicitly contains:
 
 - **Feature:** the desired outcome and user value.
 - **Scope:** what is included and excluded.
 - **Success criteria:** observable checks for completion.
+
+For a new issue, preserve its Markdown formatting by following this sequence:
+
+1. Draft the complete body in an ignored file named `.tmp/<issue>.md`, where `<issue>` is a descriptive, lower-kebab-case issue slug (for example, `.tmp/add-login.md`).
+2. Create the issue with `gh issue create --title "<title>" --body-file .tmp/<issue>.md`. Do not pass the issue body as an inline `--body` argument.
+3. Record the created issue number, then use that issue as the contract for all subsequent work.
 
 The issue is the contract between the human and the agent. If the requested work exceeds the issue, update the issue or pause for clarification. Link the issue in commits and the pull request (for example, `Closes #123` when the PR should close it).
 
@@ -30,3 +36,5 @@ The issue is the contract between the human and the agent. If the requested work
 If `main` is absent, do not silently use another branch; report the repository state and ask the human to establish or rename the default branch. Do not force-push shared branches or bypass required checks.
 
 The repository's `.gitignore` must exclude `worktrees/*` while preserving `worktrees/.gitkeep`; never add an agent's worktree contents to version control.
+
+The repository's `.gitignore` must also exclude `.tmp/`; never add temporary issue drafts to version control.

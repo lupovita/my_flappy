@@ -1,3 +1,6 @@
 # Agent worktrees are local handoff directories, not repository content.
 worktrees/*
 !worktrees/.gitkeep
+
+# Local drafts used to preserve Markdown formatting in GitHub issue bodies.
+.tmp/
