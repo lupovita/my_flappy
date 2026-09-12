@@ -21,6 +21,8 @@ flowchart LR
 
 Open `index.html` in a browser. There are no dependencies to install.
 
+Or play the live site: [Flappy Learns on GitHub Pages](https://lupovita.github.io/my_flappy/).
+
 ## Current milestone
 
 - Playable keyboard/tap Flappy Bird game
