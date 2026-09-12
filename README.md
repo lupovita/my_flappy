@@ -4,7 +4,7 @@ A beginner-friendly static HTML/CSS/JavaScript project about teaching a neural n
 
 ## Contribution flow
 
-![Contribution flow: align on intent, create an issue, branch, and worktree, code and test locally, commit, push, open a pull request, complete CI and review, then approve and merge to main. CI/review feedback and follow-up work both return to code and local tests.](assets/contribution-flow.svg)
+![Contribution flow: align on intent, create an issue, isolate work in a worktree and branch, code and test locally, commit and push, open a pull request, complete CI and review, approve and merge to main, then delete the worktree and branch. CI/review feedback and post-merge follow-up work both return to code and local tests.](assets/contribution-flow.svg)
 
 ## Run it
 
