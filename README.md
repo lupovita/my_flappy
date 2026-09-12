@@ -2,6 +2,21 @@
 
 A beginner-friendly static HTML/CSS/JavaScript project about teaching a neural network to play Flappy Bird.
 
+## Contribution flow
+
+```mermaid
+flowchart LR
+    align[Align on intent] --> issue[Create issue]
+    issue --> branch[Create branch]
+    branch --> worktree[Create worktree]
+    worktree --> codeTest[Code + local tests]
+    codeTest --> commit[Commit]
+    commit --> push[Push]
+    push --> pr[Open pull request]
+    pr --> review[CI and review]
+    review --> merge[Approve and merge to main]
+```
+
 ## Run it
 
 Open `index.html` in a browser. There are no dependencies to install.
