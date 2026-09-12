@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Flow"
+  short_description: "Use issue-driven branches and PRs"
+  default_prompt: "Use the issue-driven GitHub Flow for this feature."
